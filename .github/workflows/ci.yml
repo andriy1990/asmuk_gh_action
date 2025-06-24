@@ -1,4 +1,5 @@
-name: Java CI
+
+name: Java CI with Maven
 
 on:
   push:
@@ -18,14 +19,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Create output directory
-      run: mkdir -p out
-
-    - name: Compile main Java classes
-      run: javac -d out $(find src/main/java -name "*.java")
-
-    - name: Compile test Java classes
-      run: javac -cp out -d out $(find asmuk_gh_action/src/test/java -name "*.java")
+    - name: Build with Maven
+      run: mvn clean compile
 
     - name: Run tests
-      run: java -cp out com.edu.AppTest
+      run: mvn test
