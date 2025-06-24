@@ -19,7 +19,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Compile Java code
-      run: javac -d out/ src/*.java test/*.java
+      run: javac -d out/ Main.java Test.java
 
     - name: Run tests
       run: java -cp out/ Test
